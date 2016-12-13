@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <!-- Calc Colors -->
+    <color name="calc_button_unpressed">#c5cacc</color>
+    <color name="calc_button_pressed">#f4f8fa</color>
+    <color name="calc_backing">#acada9</color>
+    <color name="calc_accent">#c7c8c3</color>
+    <color name="behind_button">#313130</color>
+    <color name="screen_unlit">#2a3d23</color>
+    <color name="screen_text">#c4e68e</color>
+</resources>
