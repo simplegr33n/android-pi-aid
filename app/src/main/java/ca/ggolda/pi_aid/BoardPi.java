@@ -142,6 +142,7 @@ public class BoardPi extends AppCompatActivity {
             breakLayout.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     guessList = "";
+                    userScore = 0;
                     calculateTextview.setText("");
                     guessPlay();
 
