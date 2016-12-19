@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class BoardPi extends AppCompatActivity {
 
-    private String mPi = "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679";
+    private String mPi;
     private String guessList = "";
 
     private String flashColor = "#f4f8fa";
@@ -38,6 +38,10 @@ public class BoardPi extends AppCompatActivity {
     private TextView scoreTextview;
     private TextView highscoreTextview;
 
+    private TextView playButton;
+    private TextView closeInfo;
+
+
     private RelativeLayout breakLayout;
     private RelativeLayout piInfo;
 
@@ -51,6 +55,8 @@ public class BoardPi extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.board_pi);
+
+        mPi = getResources().getString(R.string.pi_ten_k);
 
         breakLayout = (RelativeLayout) findViewById(R.id.BreakLayout);
 
@@ -76,8 +82,17 @@ public class BoardPi extends AppCompatActivity {
         scoreTextview = (TextView) findViewById(R.id.score);
         calculateTextview = (TextView) findViewById(R.id.calculate_textview);
 
+        playButton = (TextView) findViewById(R.id.play_button);
+
         piInfo = (RelativeLayout) findViewById(R.id.pi_info);
         piInfo.setVisibility(View.GONE);
+
+        closeInfo = (TextView) findViewById(R.id.close_info);
+        closeInfo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                piInfo.setVisibility(View.GONE);
+            }
+        });
 
         highscoreTextview = (TextView) findViewById(R.id.highscore);
         if (highScore != 0) {
@@ -85,7 +100,7 @@ public class BoardPi extends AppCompatActivity {
         }
 
         breakLayout.setVisibility(View.VISIBLE);
-        breakLayout.setOnClickListener(new View.OnClickListener() {
+        playButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 guessPlay();
             }
@@ -120,6 +135,8 @@ public class BoardPi extends AppCompatActivity {
         } else {
             //Disable buttons while break menu up
             disableButtons();
+
+            piInfo.setVisibility(View.VISIBLE);
 
             String nextDigit = String.valueOf(mPi.charAt(guessList.length()));
 

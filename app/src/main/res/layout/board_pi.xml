@@ -349,13 +349,13 @@
  Color Buttons -->
 
     <LinearLayout
-        tools:visibility="gone"
+        tools:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:orientation="vertical"
         android:layout_alignParentTop="true"
-        android:orientation="vertical">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:id="@+id/BreakLayout"
@@ -365,39 +365,29 @@
             android:gravity="center"
             android:paddingBottom="10dp">
 
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:textColor="#FFF"
-                android:textSize="164dp"
-                android:textStyle="bold"
-                tools:text="1" />
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/pi_ten_k"
+                android:textColor="#00fe0d"/>
+
+            </ScrollView>
 
 
-            <TextView
-                android:id="@+id/highscore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:layout_above="@+id/score"
-                android:textColor="#dad4d4"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:textSize="44dp"
-                android:textStyle="bold"
-                tools:text="High Score: 1" />
 
             <RelativeLayout
+                android:visibility="visible"
                 android:id="@+id/pi_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
-                android:layout_centerHorizontal="true"
-                android:background="#bdbdbd"
+                android:layout_centerInParent="true"
+                android:background="#0d0f10"
                 android:padding="8dp">
 
                 <TextView
@@ -405,10 +395,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:textColor="#0F00F0"
-                    android:text="Life of Pi"
+                    android:textColor="#22ef19"
+                    android:text="Pi Aid"
                     android:textSize="44dp"
                     android:textStyle="bold" />
+
 
                 <TextView
                     android:id="@+id/fullguess"
@@ -429,15 +420,70 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/fullguess"
                     android:layout_centerHorizontal="true"
-                    android:textColor="#e00000"
+                    android:textColor="#FFFCFEFF"
                     android:textSize="44dp"
                     android:textStyle="bold"
                     tools:text="Next Digit: 1" />
 
+                <TextView
+                    android:id="@+id/score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/message"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#FFFCFEFF"
+                    android:textSize="44dp"
+                    android:textStyle="bold"
+                    tools:text="Next Digit: 1" />
+
+                <TextView
+                    android:id="@+id/highscore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/score"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#fcfeff"
+                    android:textSize="44dp"
+                    android:textStyle="bold"
+                    tools:text="Next Digit: 1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ecdfd0"
+                    android:padding="2dp"
+                    android:text="X"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold"
+                    android:textSize="44sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/close_info" />
+
+
             </RelativeLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Try Again"
+                android:background="#08ff00"
+                android:textColor="#5f5f54"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:id="@+id/play_button"
+                android:layout_marginBottom="24dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
         </RelativeLayout>
+
+
 
     </LinearLayout>
 
