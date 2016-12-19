@@ -24,20 +24,21 @@
             android:layout_height="0dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:background="@color/calc_accent"
             android:padding="8dp">
+
 
             <TextView
                 android:id="@+id/calculate_textview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/screen_unlit"
-                android:gravity="center"
+                android:gravity="right"
                 android:textColor="@color/screen_text"
                 android:textSize="24dp"
                 android:textStyle="bold"
-                tools:text="3.14" />
+                tools:text="3" />
 
 
         </LinearLayout>
@@ -351,11 +352,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:visibility="visible"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        tools:visibility="gone">
 
         <RelativeLayout
             android:id="@+id/BreakLayout"
@@ -386,10 +387,10 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_marginRight="16dp"
+                        android:layout_height="2dp"
                         android:layout_marginLeft="16dp"
-                        android:background="#00fe0d"
-                        android:layout_height="2dp" />
+                        android:layout_marginRight="16dp"
+                        android:background="#00fe0d" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -401,15 +402,14 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_marginRight="16dp"
+                        android:layout_height="2dp"
                         android:layout_marginLeft="16dp"
-                        android:background="#00fe0d"
-                        android:layout_height="2dp" />
+                        android:layout_marginRight="16dp"
+                        android:background="#00fe0d" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="120dp" />
-
 
 
                 </LinearLayout>
@@ -443,7 +443,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:background="#0d0f10"
+                android:background="#ea0d0f10"
                 android:padding="8dp"
                 android:visibility="visible">
 
@@ -472,26 +472,15 @@
                     tools:text="3.14596" />
 
                 <TextView
-                    android:id="@+id/message"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/fullguess"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="#FFFCFEFF"
-                    android:textSize="44dp"
-                    android:textStyle="bold"
-                    tools:text="Next Digit: 1" />
-
-                <TextView
                     android:id="@+id/score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/message"
                     android:layout_centerHorizontal="true"
                     android:textColor="#FFFCFEFF"
-                    android:textSize="44dp"
+                    android:textSize="32dp"
                     android:textStyle="bold"
-                    tools:text="Next Digit: 1" />
+                    tools:text="Digits: 1" />
 
                 <TextView
                     android:id="@+id/highscore"
@@ -500,9 +489,9 @@
                     android:layout_below="@+id/score"
                     android:layout_centerHorizontal="true"
                     android:textColor="#fcfeff"
-                    android:textSize="44dp"
+                    android:textSize="20dp"
                     android:textStyle="bold"
-                    tools:text="Next Digit: 1" />
+                    tools:text="High Score: 1" />
 
                 <TextView
                     android:id="@+id/close_info"
@@ -517,6 +506,17 @@
                     android:textColor="#FF0000"
                     android:textSize="44sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fullguess"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#FFFCFEFF"
+                    android:textSize="32dp"
+                    android:textStyle="bold"
+                    tools:text="Next Digit: 1" />
 
 
             </RelativeLayout>

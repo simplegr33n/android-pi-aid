@@ -5,9 +5,11 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 
@@ -33,6 +35,7 @@ public class BoardPi extends AppCompatActivity {
     private TextView fullGuess;
 
     private TextView calculateTextview;
+    private ScrollView calculateScrollview;
 
     private TextView messageTextview;
     private TextView scoreTextview;
@@ -81,6 +84,7 @@ public class BoardPi extends AppCompatActivity {
         messageTextview = (TextView) findViewById(R.id.message);
         scoreTextview = (TextView) findViewById(R.id.score);
         calculateTextview = (TextView) findViewById(R.id.calculate_textview);
+        calculateTextview.setMovementMethod(new ScrollingMovementMethod());
 
         playButton = (TextView) findViewById(R.id.play_button);
         playButton.setText("Go!");
@@ -106,6 +110,7 @@ public class BoardPi extends AppCompatActivity {
                 guessList = "";
                 userScore = 0;
                 calculateTextview.setText("");
+
                 guessPlay();
 
             }
@@ -162,14 +167,6 @@ public class BoardPi extends AppCompatActivity {
             }
 
             breakLayout.setVisibility(View.VISIBLE);
-//            breakLayout.setOnClickListener(new View.OnClickListener() {
-//                public void onClick(View v) {
-//                    guessList = "";
-//                    userScore = 0;
-//                    calculateTextview.setText("");
-//                    guessPlay();
-//                }
-//            });
 
         }
 
@@ -420,6 +417,8 @@ public class BoardPi extends AppCompatActivity {
             }
         });
 
+        // TODO: add equals button for pause menu
+
 
     }
 
@@ -454,3 +453,7 @@ public class BoardPi extends AppCompatActivity {
         finish();
     }
 }
+
+
+
+
