@@ -103,7 +103,11 @@ public class BoardPi extends AppCompatActivity {
         breakLayout.setVisibility(View.VISIBLE);
         playButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                guessList = "";
+                userScore = 0;
+                calculateTextview.setText("");
                 guessPlay();
+
             }
         });
 
@@ -158,15 +162,14 @@ public class BoardPi extends AppCompatActivity {
             }
 
             breakLayout.setVisibility(View.VISIBLE);
-            breakLayout.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    guessList = "";
-                    userScore = 0;
-                    calculateTextview.setText("");
-                    guessPlay();
-
-                }
-            });
+//            breakLayout.setOnClickListener(new View.OnClickListener() {
+//                public void onClick(View v) {
+//                    guessList = "";
+//                    userScore = 0;
+//                    calculateTextview.setText("");
+//                    guessPlay();
+//                }
+//            });
 
         }
 
