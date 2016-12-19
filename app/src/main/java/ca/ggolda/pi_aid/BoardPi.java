@@ -83,6 +83,7 @@ public class BoardPi extends AppCompatActivity {
         calculateTextview = (TextView) findViewById(R.id.calculate_textview);
 
         playButton = (TextView) findViewById(R.id.play_button);
+        playButton.setText("Go!");
 
         piInfo = (RelativeLayout) findViewById(R.id.pi_info);
         piInfo.setVisibility(View.GONE);
@@ -139,12 +140,13 @@ public class BoardPi extends AppCompatActivity {
             piInfo.setVisibility(View.VISIBLE);
 
             String nextDigit = String.valueOf(mPi.charAt(guessList.length()));
+            calculateTextview.setText("");
 
             messageTextview.setTextColor(Color.parseColor("#FF0000"));
             messageTextview.setText("Next Digit: " + nextDigit );
 
             scoreTextview.setTextColor(Color.parseColor("#FFFFFF"));
-            scoreTextview.setText(String.valueOf(userScore));
+            scoreTextview.setText("Your Score: " + String.valueOf(userScore));
 
             fullGuess.setText(guessList);
 

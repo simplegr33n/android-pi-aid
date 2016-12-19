@@ -349,13 +349,13 @@
  Color Buttons -->
 
     <LinearLayout
-        tools:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        tools:visibility="visible">
 
         <RelativeLayout
             android:id="@+id/BreakLayout"
@@ -367,52 +367,109 @@
 
             <ScrollView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_margin="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/pi_ten_k"
-                android:textColor="#00fe0d"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/ten_k_title"
+                        android:textAlignment="center"
+                        android:textColor="#00fe0d"
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:background="#00fe0d"
+                        android:layout_height="2dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="@string/pi_ten_k"
+                        android:textColor="#00fe0d" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:background="#00fe0d"
+                        android:layout_height="2dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp" />
+
+
+
+                </LinearLayout>
 
             </ScrollView>
 
 
+            <TextView
+                android:id="@+id/play_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp"
+                android:background="#08ff00"
+                android:paddingBottom="24dp"
+                android:paddingTop="24dp"
+                android:text="Try Again"
+                android:textAlignment="center"
+                android:textColor="#5f5f54"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <RelativeLayout
-                android:visibility="visible"
                 android:id="@+id/pi_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                android:layout_centerInParent="true"
+
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
                 android:background="#0d0f10"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/boardname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:textColor="#22ef19"
                     android:text="Pi Aid"
+                    android:textColor="#22ef19"
                     android:textSize="44dp"
                     android:textStyle="bold" />
 
 
                 <TextView
                     android:id="@+id/fullguess"
-                    android:background="#000000"
-                    android:textColor="#FFFFFF"
                     android:layout_width="match_parent"
-                    android:padding="4dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/boardname"
                     android:layout_centerHorizontal="true"
-                    tools:text="3.14596"
+                    android:background="#363f35"
+                    android:padding="4dp"
+                    android:textColor="#FFFFFF"
                     android:textSize="24dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="3.14596" />
 
                 <TextView
                     android:id="@+id/message"
@@ -448,41 +505,23 @@
                     tools:text="Next Digit: 1" />
 
                 <TextView
+                    android:id="@+id/close_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
                     android:background="#ecdfd0"
                     android:padding="2dp"
                     android:text="X"
                     android:textColor="#FF0000"
-                    android:textStyle="bold"
                     android:textSize="44sp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:id="@+id/close_info" />
+                    android:textStyle="bold" />
 
 
             </RelativeLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Try Again"
-                android:background="#08ff00"
-                android:textColor="#5f5f54"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
-                android:id="@+id/play_button"
-                android:layout_marginBottom="24dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
         </RelativeLayout>
-
 
 
     </LinearLayout>
