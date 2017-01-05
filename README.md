@@ -1,4 +1,4 @@
-# Android Pi Aid
+# <img src="https://github.com/simplegr33n/android-game-assimilate/blob/master/screenshots/logos/512logo.jpg" width="32"> Android Pi Aid
 
 Check it out on the Google Play store here: 
 https://play.google.com/store/apps/details?id=ca.ggolda.pi_aid
