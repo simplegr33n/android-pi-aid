@@ -36,7 +36,7 @@
                 android:background="@color/screen_unlit"
                 android:gravity="right"
                 android:textColor="@color/screen_text"
-                android:textSize="24dp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 tools:text="3" />
 
@@ -66,7 +66,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="1"
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -88,7 +88,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="2"
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -110,7 +110,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="3"
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -140,7 +140,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="4"
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -162,7 +162,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="5"
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -184,7 +184,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="6"
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -214,7 +214,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="7"
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -236,7 +236,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="8"
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -258,7 +258,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="9"
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -288,7 +288,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="."
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -310,7 +310,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="0"
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -332,7 +332,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="="
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -362,6 +362,7 @@
             android:id="@+id/BreakLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingTop="20dp"
             android:background="#d447464a"
             android:gravity="center"
             android:paddingBottom="10dp">
@@ -382,7 +383,7 @@
                         android:text="@string/ten_k_title"
                         android:textAlignment="center"
                         android:textColor="#00fe0d"
-                        android:textSize="24dp"
+                        android:textSize="32dp"
                         android:textStyle="bold" />
 
                     <View
@@ -435,41 +436,53 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/pi_info"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
                 android:background="#ea0d0f10"
-                android:padding="8dp"
-                android:visibility="visible">
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="24dp"
+                android:paddingBottom="24dp"
+                android:visibility="visible"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true">
+
+
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+
+                    <TextView
+                        android:textAlignment="center"
+                        android:id="@+id/fullguess"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="#499ff995"
+                        android:padding="4dp"
+                        android:textColor="#FFFFFF"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:text="@string/pi_ten_k" />
+
+                </ScrollView>
 
                 <TextView
-                    android:id="@+id/boardname"
+                    android:id="@+id/message"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/fullguess"
                     android:layout_centerHorizontal="true"
-                    android:text="Pi Aid"
-                    android:textColor="#22ef19"
-                    android:textSize="44dp"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/fullguess"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/boardname"
-                    android:layout_centerHorizontal="true"
-                    android:background="#363f35"
-                    android:padding="4dp"
-                    android:textColor="#FFFFFF"
-                    android:textSize="24dp"
+                    android:textColor="#FF0000"
+                    android:textSize="48sp"
                     android:textStyle="bold"
-                    tools:text="3.14596" />
+                    tools:text="Next Digit: 1" />
+
 
                 <TextView
                     android:id="@+id/score"
@@ -477,10 +490,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/message"
                     android:layout_centerHorizontal="true"
-                    android:textColor="#FFFCFEFF"
-                    android:textSize="32dp"
+                    android:textColor="#22ef19"
+                    android:textSize="32sp"
                     android:textStyle="bold"
-                    tools:text="Digits: 1" />
+                    tools:text="Score: 1" />
 
                 <TextView
                     android:id="@+id/highscore"
@@ -489,37 +502,12 @@
                     android:layout_below="@+id/score"
                     android:layout_centerHorizontal="true"
                     android:textColor="#fcfeff"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     tools:text="High Score: 1" />
 
-                <TextView
-                    android:id="@+id/close_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:background="#ecdfd0"
-                    android:padding="2dp"
-                    android:text="X"
-                    android:textColor="#FF0000"
-                    android:textSize="44sp"
-                    android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/message"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/fullguess"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="#FFFCFEFF"
-                    android:textSize="32dp"
-                    android:textStyle="bold"
-                    tools:text="Next Digit: 1" />
-
-
-            </RelativeLayout>
+            </LinearLayout>
 
         </RelativeLayout>
 

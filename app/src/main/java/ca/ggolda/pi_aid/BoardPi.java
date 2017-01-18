@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -46,7 +47,7 @@ public class BoardPi extends AppCompatActivity {
 
 
     private RelativeLayout breakLayout;
-    private RelativeLayout piInfo;
+    private LinearLayout piInfo;
 
     SharedPreferences sharedPref;
     private int highScore;
@@ -89,15 +90,8 @@ public class BoardPi extends AppCompatActivity {
         playButton = (TextView) findViewById(R.id.play_button);
         playButton.setText("Go!");
 
-        piInfo = (RelativeLayout) findViewById(R.id.pi_info);
+        piInfo = (LinearLayout) findViewById(R.id.pi_info);
         piInfo.setVisibility(View.GONE);
-
-        closeInfo = (TextView) findViewById(R.id.close_info);
-        closeInfo.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                piInfo.setVisibility(View.GONE);
-            }
-        });
 
         highscoreTextview = (TextView) findViewById(R.id.highscore);
         if (highScore != 0) {
@@ -105,6 +99,13 @@ public class BoardPi extends AppCompatActivity {
         }
 
         breakLayout.setVisibility(View.VISIBLE);
+
+        piInfo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                piInfo.setVisibility(View.GONE);
+            }
+        });
+
         playButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 guessList = "";
