@@ -40,6 +40,10 @@ public class BoardPiTimed extends AppCompatActivity {
 
     private TextView calculateTextview;
 
+    private TextView regularButton;
+    private TextView playButton;
+
+
     private TextView timeleftTextview;
 
     private TextView messageTextview;
@@ -81,8 +85,6 @@ public class BoardPiTimed extends AppCompatActivity {
         timeleftTextview = (TextView) findViewById(R.id.time_left);
         timeleftTextview.setText("seconds remaining: 10");
 
-
-
         fullGuess = (TextView) findViewById(R.id.fullguess);
         fullGuess.setVisibility(View.GONE);
 
@@ -108,9 +110,20 @@ public class BoardPiTimed extends AppCompatActivity {
         }
 
         breakLayout.setVisibility(View.VISIBLE);
-        breakLayout.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
 
+        regularButton = (TextView) findViewById(R.id.timed_button);
+        regularButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BoardPiTimed.this, BoardPi.class);
+                startActivity(intent);
+            }
+        });
+
+        playButton = (TextView) findViewById(R.id.play_button);
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 guessPlay();
             }
         });
@@ -222,7 +235,7 @@ public class BoardPiTimed extends AppCompatActivity {
             }
 
             breakLayout.setVisibility(View.VISIBLE);
-            breakLayout.setOnClickListener(new View.OnClickListener() {
+            playButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     guessList = "";
                     calculateTextview.setText("");
