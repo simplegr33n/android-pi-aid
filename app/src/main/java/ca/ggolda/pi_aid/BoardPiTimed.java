@@ -5,19 +5,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.ScrollingMovementMethod;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 
-public class BoardPi extends AppCompatActivity {
+public class BoardPiTimed extends AppCompatActivity {
 
-    private String mPi;
+    private String mPi = "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679";
     private String guessList = "";
 
     private String flashColor = "#f4f8fa";
@@ -34,33 +32,37 @@ public class BoardPi extends AppCompatActivity {
     private TextView button9;
     private TextView buttonDot;
 
+    private long timeRemaining = 0;
+
+    private CountDownTimer countDown;
+
     private TextView fullGuess;
 
     private TextView calculateTextview;
-    private ScrollView calculateScrollview;
+
+    private TextView timeleftTextview;
 
     private TextView messageTextview;
     private TextView scoreTextview;
     private TextView highscoreTextview;
 
-    private TextView playButton;
-    private TextView timedButton;
-
     private RelativeLayout breakLayout;
-    private LinearLayout piInfo;
+    private RelativeLayout piInfo;
 
     SharedPreferences sharedPref;
     private int highScore;
+    private int sleepTime;
 
     private int userScore = 0;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.board_pi);
+        setContentView(R.layout.board_pi_timed);
 
-        mPi = getResources().getString(R.string.pi_ten_k);
 
         breakLayout = (RelativeLayout) findViewById(R.id.BreakLayout);
 
@@ -76,31 +78,29 @@ public class BoardPi extends AppCompatActivity {
         button0 = (TextView) findViewById(R.id.zero_button);
         buttonDot = (TextView) findViewById(R.id.dot_button);
 
+        timeleftTextview = (TextView) findViewById(R.id.time_left);
+        timeleftTextview.setText("seconds remaining: 10");
+
+
+
         fullGuess = (TextView) findViewById(R.id.fullguess);
+        fullGuess.setVisibility(View.GONE);
 
         // get current high score and sleeptime from shared preferences
-        sharedPref = getSharedPreferences("ggco_pi_aid_values", MODE_PRIVATE);
-        highScore = sharedPref.getInt("highscore", 0);
+        sharedPref = getSharedPreferences("ggco_colormem_values", MODE_PRIVATE);
+        highScore = sharedPref.getInt("highscore_pi", 0);
+        sleepTime = sharedPref.getInt("sleep_time", 850);
 
         messageTextview = (TextView) findViewById(R.id.message);
-        scoreTextview = (TextView) findViewById(R.id.score);
+        messageTextview.setTextSize(44);
+        messageTextview.setTextColor(Color.parseColor("#FFFFFF"));
+        messageTextview.setText("You will have 10 seconds once you start typing");
+
+
         calculateTextview = (TextView) findViewById(R.id.calculate_textview);
-        calculateTextview.setMovementMethod(new ScrollingMovementMethod());
 
-        playButton = (TextView) findViewById(R.id.play_button);
-        playButton.setText("Go!");
+        scoreTextview = (TextView) findViewById(R.id.score);
 
-        timedButton = (TextView) findViewById(R.id.timed_button);
-        timedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(BoardPi.this, BoardPiTimed.class);
-                startActivity(intent);
-            }
-        });
-
-        piInfo = (LinearLayout) findViewById(R.id.pi_info);
-        piInfo.setVisibility(View.GONE);
 
         highscoreTextview = (TextView) findViewById(R.id.highscore);
         if (highScore != 0) {
@@ -108,21 +108,10 @@ public class BoardPi extends AppCompatActivity {
         }
 
         breakLayout.setVisibility(View.VISIBLE);
-
-        piInfo.setOnClickListener(new View.OnClickListener() {
+        breakLayout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                piInfo.setVisibility(View.GONE);
-            }
-        });
-
-        playButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                guessList = "";
-                userScore = 0;
-                calculateTextview.setText("");
 
                 guessPlay();
-
             }
         });
 
@@ -136,8 +125,58 @@ public class BoardPi extends AppCompatActivity {
         if (press.equals(String.valueOf(mPi.charAt(guessList.length())))) {
 
             guessList = guessList + press;
-
             calculateTextview.setText(guessList);
+
+            if (guessList.length() == 1) {
+                countDown = new CountDownTimer(10000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                        //do something in every tick
+
+                        timeleftTextview.setText("seconds remaining: " + millisUntilFinished / 1000);
+                    }
+
+                    public void onFinish() {
+                        timeleftTextview.setText("seconds remaining: 0");
+
+                        //Disable buttons while break menu up
+                        disableButtons();
+                        breakLayout.setVisibility(View.VISIBLE);
+
+
+                        String nextDigit = String.valueOf(mPi.charAt(guessList.length()));
+
+                        messageTextview.setTextColor(Color.parseColor("#FF0000"));
+                        messageTextview.setText("Next Digit: " + nextDigit );
+
+                        scoreTextview.setTextColor(Color.parseColor("#FFFFFF"));
+                        scoreTextview.setText(String.valueOf(userScore));
+
+                        fullGuess.setVisibility(View.VISIBLE);
+                        fullGuess.setText(guessList);
+
+
+                        highscoreTextview = (TextView) findViewById(R.id.highscore);
+                        if (highScore != 0) {
+                            highscoreTextview.setText("High Score: " + String.valueOf(highScore));
+                        }
+
+
+                        breakLayout.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View v) {
+                                guessList = "";
+                                calculateTextview.setText("");
+                                timeleftTextview.setText("seconds remaining: 10");
+                                guessPlay();
+
+                            }
+                        });
+                    }
+                }.start();
+
+            }
+
+
 
             scoreTextview.setTextColor(Color.parseColor("#FFFFFF"));
 
@@ -146,30 +185,36 @@ public class BoardPi extends AppCompatActivity {
             // if new usesScore beats old high score, change value in shared preferences
             if (userScore >= highScore) {
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putInt("highscore", userScore);
+                editor.putInt("highscore_pi", userScore);
                 editor.apply();
 
-                highScore = sharedPref.getInt("highscore", 0);
+                highScore = sharedPref.getInt("highscore_pi", 0);
             }
 
         } else {
+            timeleftTextview.setText("");
+
+            //When to cancel the CountDownTimer
+            if (countDown != null) {
+                countDown.cancel();
+            }
+
+            timeleftTextview.setText("seconds remaining: 10");
+
             //Disable buttons while break menu up
             disableButtons();
 
-            piInfo.setVisibility(View.VISIBLE);
-
             String nextDigit = String.valueOf(mPi.charAt(guessList.length()));
-            calculateTextview.setText("");
 
             messageTextview.setTextColor(Color.parseColor("#FF0000"));
             messageTextview.setText("Next Digit: " + nextDigit );
 
             scoreTextview.setTextColor(Color.parseColor("#FFFFFF"));
-            scoreTextview.setText("Your Score: " + String.valueOf(userScore));
+            scoreTextview.setText(String.valueOf(userScore));
 
             fullGuess.setText(guessList);
 
-            piInfo.setVisibility(View.VISIBLE);
+
 
             highscoreTextview = (TextView) findViewById(R.id.highscore);
             if (highScore != 0) {
@@ -177,13 +222,23 @@ public class BoardPi extends AppCompatActivity {
             }
 
             breakLayout.setVisibility(View.VISIBLE);
+            breakLayout.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    guessList = "";
+                    calculateTextview.setText("");
+                    guessPlay();
+
+                }
+            });
 
         }
 
     }
 
     private void guessPlay() {
+        timeleftTextview.setText("seconds remaining: 10");
         breakLayout.setVisibility(View.GONE);
+
 
         button1.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -427,8 +482,6 @@ public class BoardPi extends AppCompatActivity {
             }
         });
 
-        // TODO: add equals button for pause menu
-
 
     }
 
@@ -459,11 +512,9 @@ public class BoardPi extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        Intent intent = new Intent(BoardPiTimed.this, BoardPi.class);
+        startActivity(intent);
 
-        finish();
+        return;
     }
 }
-
-
-
-

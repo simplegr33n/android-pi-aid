@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -17,28 +18,39 @@
         android:layout_margin="8dp"
         android:background="@color/calc_backing"
         android:orientation="vertical"
+        android:gravity="right"
         android:padding="24dp">
+
+        <TextView
+            android:id="@+id/time_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="2dp"
+            android:background="#FF0000"
+            android:layout_marginBottom="2dp"
+            android:textStyle="bold"
+            tools:text="seconds remaining: 10"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:background="@color/calc_accent"
             android:padding="8dp">
-
 
             <TextView
                 android:id="@+id/calculate_textview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/screen_unlit"
-                android:gravity="right"
+                android:gravity="center"
                 android:textColor="@color/screen_text"
-                android:textSize="24sp"
+                android:textSize="24dp"
                 android:textStyle="bold"
-                tools:text="3" />
+                tools:text="3.14" />
 
 
         </LinearLayout>
@@ -66,7 +78,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="1"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -88,7 +100,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="2"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -110,7 +122,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="3"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -140,7 +152,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="4"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -162,7 +174,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="5"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -184,7 +196,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="6"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -214,7 +226,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="7"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -236,7 +248,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="8"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -258,7 +270,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="9"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -288,7 +300,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="."
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -310,7 +322,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="0"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -332,7 +344,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:text="="
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -344,19 +356,19 @@
     </LinearLayout>
 
     <!-- Break layout
- Careful, as Android Studio
- Keeps seeming to move this
- So it is hidden behind the
- Color Buttons -->
+Careful, as Android Studio
+Keeps seeming to move this
+So it is hidden behind the
+Color Buttons -->
 
     <LinearLayout
+        tools:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:orientation="vertical"
-        tools:visibility="visible">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:id="@+id/BreakLayout"
@@ -364,172 +376,78 @@
             android:layout_height="match_parent"
             android:background="#d447464a"
             android:gravity="center"
-            android:paddingTop="10dp">
-
-            <ScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="12dp"
-                        android:text="@string/ten_k_title"
-                        android:textAlignment="center"
-                        android:textColor="#00fe0d"
-                        android:textSize="32dp"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:background="#00fe0d" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:text="@string/pi_ten_k"
-                        android:textColor="#00fe0d" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:background="#00fe0d" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp" />
+            android:paddingBottom="10dp">
 
 
-                </LinearLayout>
-
-            </ScrollView>
+            <!-- setting to invisible for aesthetics for now -->
 
 
-            <LinearLayout
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+
+            <TextView
+                android:id="@+id/fullguess"
+                android:background="#000000"
+                android:textColor="#FFFFFF"
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/play_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="8dp"
-                    android:background="#08ff00"
-                    android:paddingBottom="20dp"
-                    android:paddingTop="20dp"
-                    android:text="Try Again"
-                    android:textAlignment="center"
-                    android:textColor="#5f5f54"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/timed_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="12dp"
-                    android:background="#ffd900"
-                    android:paddingBottom="20dp"
-                    android:paddingTop="20dp"
-                    android:text="Play Timed"
-                    android:textAlignment="center"
-                    android:textColor="#5f5f54"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/pi_info"
-                android:layout_width="match_parent"
+                android:padding="4dp"
                 android:layout_height="wrap_content"
-                android:background="#ea0d0f10"
-                android:layout_centerInParent="true"
+                android:layout_above="@id/score"
+                android:layout_marginLeft="44dp"
+                android:layout_marginRight="22dp"
+                tools:text="3.14596"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fa8bddcc"
+                android:textSize="44dp"
+                android:textStyle="bold"
+                tools:text="Great Stuff!"
+                android:layout_above="@+id/fullguess"
+                android:layout_centerHorizontal="true" />
+
+
+            <TextView
+                android:id="@+id/boardname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#dcf1abe6"
+                android:text="Pi Time"
+                android:layout_alignParentBottom="true"
+                android:textSize="44dp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/highscore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#d22be154"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                tools:text="High Score: 1"
+                android:layout_above="@+id/boardname"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:paddingBottom="24dp"
-                android:paddingTop="24dp"
-                android:visibility="visible">
+                android:textColor="#FFF"
+                android:textSize="164dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="24dp"
+                android:textStyle="bold"
+                tools:text="1"
+                android:layout_above="@id/highscore"
+                android:layout_centerHorizontal="true" />
 
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-
-                    <TextView
-                        android:id="@+id/fullguess"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:background="#499ff995"
-                        android:padding="4dp"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:text="3.14" />
-
-                </ScrollView>
-
-                <TextView
-                    android:id="@+id/message"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/fullguess"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="#FF0000"
-                    android:textSize="48sp"
-                    android:textStyle="bold"
-                    tools:text="Next Digit: 1" />
-
-
-                <TextView
-                    android:id="@+id/score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/message"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="#22ef19"
-                    android:textSize="32sp"
-                    android:textStyle="bold"
-                    tools:text="Score: 1" />
-
-                <TextView
-                    android:id="@+id/highscore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/score"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="#fcfeff"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="High Score: 1" />
-
-
-            </LinearLayout>
 
         </RelativeLayout>
-
 
     </LinearLayout>
 
